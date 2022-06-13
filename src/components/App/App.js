@@ -43,7 +43,7 @@ function App() {
         const obj = {
           question: data[0].question,
           answer: data[0].answer,
-          category: data[0].category.title,
+          category: data[0].category.title.toUpperCase(),
           points: data[0].value,
           showQuestion: false,
         };
@@ -58,15 +58,19 @@ function App() {
   return (
     <div className="App">
       <h1>Welcome to Jeopardy !</h1>
-      <button onClick={handleClick}>Random Trivia Question</button>
-      <h2>Score: {score}</h2>
+      <div id='main-info'>
+      <button onClick={handleClick}>Get Random Trivia Question</button>
+      <h2>Score:</h2> <p>{score}</p>
+      <div id='score-buttons'>
       <button onClick={handleScore} name="inc">
-        I got it !
+        Got it!
       </button>
       <button onClick={handleScore} name="dec">
-        I didn't get it !
+        Didn't get it!
       </button>
+      </div>
       <Question questionObj={questionObj} handleToggle={handleToggle} />
+      </div>
     </div>
   );
 }

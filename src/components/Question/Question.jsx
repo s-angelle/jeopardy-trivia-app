@@ -3,13 +3,17 @@ import React from "react";
 const Question = ({ questionObj, handleToggle }) => {
   return (
     <div className="question">
-      <h3>Answer: {questionObj.question}</h3>
-      <h3>Category: {questionObj.category}</h3>
-      <h3>Points: {questionObj.points}</h3>
+      <h2>Category:</h2>
+      <p>{questionObj.category}</p>
+      <h2>Points:</h2>
+      <p>{questionObj.points}</p>
+      <h2>Answer:</h2>
+      <p>{questionObj.question}</p>
+      <div>
       {questionObj.showQuestion && (
-        <h3>Question: Who / What is {questionObj.answer} ?</h3>
-      )}
-      <button onClick={handleToggle}>Click to Reveal Question</button>
+      <h3>Question: What / Who is {questionObj.answer} ?</h3>
+      )}</div>
+      <button id='reveal-btn' onClick={handleToggle}> Reveal Question</button>
     </div>
   );
 };
