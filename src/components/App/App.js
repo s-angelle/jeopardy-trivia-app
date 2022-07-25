@@ -9,6 +9,8 @@ function App() {
 
   const [showQuestion, setShowQuestion] = useState(false);
 
+  const [message, setMessage] = useState(false);
+
   const handleScore = (e) => {
     const tempScore =
       score +
@@ -20,6 +22,7 @@ function App() {
     setShowQuestion(!showQuestion);
     setQuestionObj({ ...questionObj, showQuestion: !showQuestion });
   };
+
 
   const handleClick = async () => {
     const URL = "http://jservice.io/api/random";
@@ -52,7 +55,10 @@ function App() {
 
       }
       
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+      setMessage('Jeopardy API utilized is now defunct.')
+    }
   };
 
   return (
@@ -60,6 +66,7 @@ function App() {
       <h1>Welcome to Jeopardy !</h1>
       <div id='main-info'>
       <button onClick={handleClick}>Get Random Trivia Question</button>
+      {message ? null : <p> {message}</p>}
       <h2>Score:</h2> <p>{score}</p>
       <div id='score-buttons'>
       <button onClick={handleScore} name="inc">
